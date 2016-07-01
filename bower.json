@@ -1,0 +1,27 @@
+{
+  "name": "fend-p06",
+  "description": "submission for fend-p06",
+  "main": "index.html",
+  "authors": [
+    "Ray Lugo",
+    "Jr."
+  ],
+  "license": "MIT",
+  "keywords": [
+    "udacity",
+    "fend-p6",
+    "fend-p06",
+    "web",
+    "speed",
+    "optimization"
+  ],
+  "homepage": "rlugojr.github.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

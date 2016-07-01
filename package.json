@@ -1,0 +1,36 @@
+{
+  "name": "fend-p06",
+  "version": "1.0.0",
+  "description": "submission for fend-p06",
+  "main": "index.html",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rlugojr/FEND-P06.git"
+  },
+  "keywords": [
+    "udacity",
+    "fend-p6",
+    "fend-p06",
+    "web",
+    "speed",
+    "optimization"
+  ],
+  "author": "Ray Lugo, Jr.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rlugojr/FEND-P06/issues"
+  },
+  "homepage": "https://github.com/rlugojr/FEND-P06#readme",
+  "devDependencies": {
+    "graceful-fs": "^4.1.4",
+    "gulp": "^3.9.1",
+    "lodash": "^4.13.1",
+    "minimatch": "^3.0.2"
+  }
+}

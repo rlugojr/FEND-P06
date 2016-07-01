@@ -49,3 +49,8 @@ Temporary Items
 # Executables used for testing which may be present in the local repository folder
 devd.exe
 ngrok.exe
+
+# Ignore NPM files
+node_modules/
+
+
