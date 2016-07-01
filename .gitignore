@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Executables used for testing which may be present in the local repository folder
+devd.exe
+ngrok.exe
