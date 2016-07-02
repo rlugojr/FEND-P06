@@ -11,24 +11,27 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   rev = require('gulp-rev');
 
-
+//run validation checks
 gulp.task('html_check',function() {
-  gulp.src(['/src/*.html','src/views/*.html'])
+  gulp.src('**/*.html')
     .pipe(htmlhint())
     .pipe(htmlhint.reporter());
 });
 
 gulp.task('css_check', function() {
-  gulp.src(['src/css/*.css','src/views/css/*.css'])
+  gulp.src('**/*.css')
     .pipe(csslint())
     .pipe(csslint.reporter('compact'));
 });
 
 gulp.task('js_check', function() {
-  return gulp.src(['src/js/*.js','src/views/js/*.js'])
+  return gulp.src('**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default', { verbose: true }));
 });
+
+
+
 
 gulp.task('default', function() {
   // place code for your default task here
