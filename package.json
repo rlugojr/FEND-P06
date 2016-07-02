@@ -41,6 +41,9 @@
     "gulp-imagemin": "^3.0.1",
     "gulp-jshint": "^2.0.1",
     "gulp-jsmin": "^0.1.5",
+    "gulp-log-capture": "0.0.6",
+    "gulp-messenger": "^0.18.0",
+    "gulp-responsive": "^2.4.0",
     "gulp-rev": "^7.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
@@ -48,6 +51,7 @@
     "jshint": "^2.9.2",
     "lodash": "^4.13.1",
     "minimatch": "^3.0.2",
-    "pump": "^1.0.1"
+    "pump": "^1.0.1",
+    "reporters": "0.0.4"
   }
 }

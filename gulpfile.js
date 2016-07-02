@@ -13,6 +13,11 @@ var gulp = require('gulp'),
   sourcemaps = require('gulp-sourcemaps'),
   rev = require('gulp-rev'),
   pump = require('pump');
+  reporters = require('reporters')
+  logCapt = require('gulp-log-capture');
+  
+//set report collection level
+reporters.debug = true;
 
 //run validation checks
 gulp.task('html_check',function() {
@@ -21,16 +26,28 @@ gulp.task('html_check',function() {
     .pipe(htmlhint.reporter());
 });
 
+
 gulp.task('css_check', function() {
   gulp.src('src/**/*.css')
     .pipe(csslint())
-    .pipe(csslint.reporter('compact'));
+    .pipe(csslint.reporter(reporters('gulp-csslint')));
 });
 
 gulp.task('js_check', function() {
   return gulp.src('src/**/*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('default', { verbose: true }));
+    .pipe(jshint.reporter(reporters('gulp-jshint')));
+});
+
+//collect debug report
+gulp.task('reports', function(){
+  logCapt.start(console,'build')
+  reporters.output = function(messages) {
+    messages && messages.forEach(function(message) {
+      console.log(message.description);
+    });
+  }
+  logCapt.stop('xml')
 });
 
 //optimize and minify images
@@ -66,7 +83,7 @@ gulp.task('minCSS', function () {
 gulp.task('minJS', function () {
     gulp.src('src/**/*.js')
       .pipe(jsmin())
-      .pipe(rename({suffix: '.min.js'}))
+      .pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest('dist'));
 });
 
@@ -79,13 +96,18 @@ gulp.task('copyMD', function() {
 //delete dist folder in preparation for next build.
 gulp.task('wipe_dist', function() {
   return del.sync('dist/**/*');
-})
+});
 
-//clear caches
+//clear caches - not needed yet.
 gulp.task('clear_cache', function (callback) {
   return cache.clearAll(callback)
-})
+});
 
+gulp.task('resetBuild',['wipe_dist']);
+
+gulp.task('checkAll',['html_check','css_check','js_check','reports']);
+
+gulp.task('makeBuild',['minHTML','minCSS','minJS','copyMD'])
 
 gulp.task('default', function() {
   return gutil.log('Run, Gulp, ruuuuuun! So I ran. And I ran and I ran and I ran!');
