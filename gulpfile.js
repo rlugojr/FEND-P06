@@ -30,7 +30,28 @@ gulp.task('js_check', function() {
     .pipe(jshint.reporter('default', { verbose: true }));
 });
 
+//optimize and minify images
+gulp.task('minRootImages', () =>
+    gulp.src('src/img/*.+(png|jpg|gif|svg)')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/img'))
+);
 
+gulp.task('minSubImages', () =>
+    gulp.src('src/views/img/*.+(png|jpg|gif|svg)')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/views/img'))
+);
+
+//delete dist folder in preparation for next build.
+gulp.task('wipe_dist', function() {
+  return del.sync('dist');
+})
+
+//clear caches
+gulp.task('clear_cache', function (callback) {
+  return cache.clearAll(callback)
+})
 
 
 gulp.task('default', function() {
