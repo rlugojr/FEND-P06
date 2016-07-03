@@ -1,3 +1,4 @@
+var critical = require('critical');
 var gulp = require('gulp'),
   gutil = require('gulp-util'),
   csslint = require('gulp-csslint'),
@@ -51,9 +52,15 @@ gulp.task('reports', function(){
   logCapt.stop('xml')
 });
 
+//Copy static images downloaded from 3rd party site to distribution.
+//They are already mini and compressed enough!
+gulp.task('copyPics', function() {
+  gulp.src('src/img/index*.jpg').pipe(gulp.dest('dist/img'));
+});
+
 //resize, create responsive sets and minify images
 gulp.task('resizeImages', function() {
-  return gulp.src('src/**/*.{png,jpg}')
+  return gulp.src(['src/**/*.{png,jpg}','!src/**/index*.{png,jpg}'])
     .pipe(responsive({
       'img/profilepic.jpg': {width: 70},
       'views/images/pizzeria.jpg': [{
@@ -164,9 +171,21 @@ gulp.task('resetBuild',['wipe_dist','wipe_img_temp']);
 
 gulp.task('lintSource',['html_check','css_check','js_check','reports']);
 
-gulp.task('imgProcess',['imagemin'])
+gulp.task('imgProcess',['copyPics','imagemin']);
 
-gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD'])
+gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD']);
+
+gulp.task('critical',['makeBuild'],function(cb){
+  critical.generate({
+        inline: true,
+        base: 'dist/',
+        src: 'index.html',
+        dest: 'dist/index-critical.html',
+        minify: true,
+        width: 320,
+        height: 480
+    });
+});
 
 gulp.task('default', function() {
   return gutil.log('The available options are: resetBuild, lintSource, imgProcess or makeBuild.');

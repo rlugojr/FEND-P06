@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/rlugojr/FEND-P06#readme",
   "devDependencies": {
+    "critical": "^0.7.3",
     "del": "^2.2.1",
     "graceful-fs": "^4.1.4",
     "gulp": "^3.9.1",
