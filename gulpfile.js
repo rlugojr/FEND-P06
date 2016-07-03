@@ -8,7 +8,8 @@ var gulp = require('gulp'),
   jsmin = require('gulp-jsmin'),
   htmlmin = require('gulp-htmlmin'),
   csso = require('gulp-csso'),
-  imagemin = require('gulp-imagemin'),
+  imagemin = require('gulp-imagemin')
+  responsive = require('gulp-responsive'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
   rev = require('gulp-rev'),
@@ -50,12 +51,68 @@ gulp.task('reports', function(){
   logCapt.stop('xml')
 });
 
-//optimize and minify images
-gulp.task('minImages', () =>
-    gulp.src('src/**/*.+(png|jpg|gif|svg)')
+//resize, create responsive sets and minify images
+gulp.task('resizeImages', function() {
+  return gulp.src('src/**/*.{png,jpg}')
+    .pipe(responsive({
+      'img/profilepic.jpg': {width: 70},
+      'views/images/pizzeria.jpg': [{
+          width: 360,
+          rename: 'views/images/pizzeria@3x.jpg'
+        },{
+          width: 240,
+          rename: 'views/images/pizzeria@2x.jpg'
+        },{
+          width: 120,
+          rename: 'views/images/pizzeria@1x.jpg'
+        }],
+      'views/images/pizza.png': [{
+          width: 200,
+          rename: 'views/images/pizzeria@3x.png'
+        },{
+          width: 150,
+          rename: 'views/images/pizzeria@2x.png'
+        },{
+          width: 100,
+          rename: 'views/images/pizzeria@1x.png'
+        }],
+      'img/2048.png': [{
+          width: 560,
+          rename: 'img/2048@3x.png'
+        },{
+          width: 260,
+          rename: 'img/2048@1x.png'
+        }],
+      'img/cam_be_like.jpg': [{
+          width: 480,
+          rename: 'img/cam_be_like@2x.jpg'
+        },{
+          width: 260,
+          rename: 'img/cam_be_like@1x.jpg'
+        }],
+      'img/mobilewebdev.jpg': [{
+          width: 600,
+          rename: 'img/mobilewebdev@2x.jpg'
+        },{
+          width: 260,
+          rename: 'img/mobilewebdev@1x.jpg'
+        }],
+       },{
+          progressive: true,
+          quality: 70,
+          withMetadata: false,
+          withoutEnlargement: false,
+
+      }))
+      .pipe(gulp.dest('src/img_tmp'))
+});
+
+gulp.task('imagemin',['resizeImages'],function(){
+    gulp.src('src/img_tmp/**/*')
         .pipe(imagemin())
         .pipe(gulp.dest('dist'))
-);
+});
+
 
 //optimize and minify HTML
 gulp.task('minHTML', function() {
@@ -99,16 +156,18 @@ gulp.task('wipe_dist', function() {
 });
 
 //clear caches - not needed yet.
-gulp.task('clear_cache', function (callback) {
-  return cache.clearAll(callback)
+gulp.task('wipe_img_temp', function () {
+  return del.sync('src/img_tmp/**/*');
 });
 
-gulp.task('resetBuild',['wipe_dist']);
+gulp.task('resetBuild',['wipe_dist','wipe_img_temp']);
 
-gulp.task('checkAll',['html_check','css_check','js_check','reports']);
+gulp.task('lintSource',['html_check','css_check','js_check','reports']);
 
-gulp.task('makeBuild',['minHTML','minCSS','minJS','copyMD'])
+gulp.task('imgProcess',['imagemin'])
+
+gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD'])
 
 gulp.task('default', function() {
-  return gutil.log('Run, Gulp, ruuuuuun! So I ran. And I ran and I ran and I ran!');
+  return gutil.log('The available options are: resetBuild, lintSource, imgProcess or makeBuild.');
 });

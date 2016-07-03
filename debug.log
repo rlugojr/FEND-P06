@@ -1,0 +1,464 @@
+[19:25:23] Using gulpfile D:\Data\Documents\GitHub\FEND-P06\gulpfile.js
+[19:25:23] Starting 'html_check'...
+[19:25:23] Finished 'html_check' after 9.8 ms
+[19:25:23] Starting 'css_check'...
+Get reporter 'gulp-csslint'.
+Creating reporter 'gulp-csslint', options: undefined
+[19:25:23] Finished 'css_check' after 3.7 ms
+[19:25:23] Starting 'js_check'...
+Get reporter 'gulp-jshint'.
+Creating reporter 'gulp-jshint', options: undefined
+[19:25:23] Starting 'reports'...
+[19:25:23] Finished 'reports' after 1.4 ms
+[19:25:23] 1 error found in D:\Data\Documents\GitHub\FEND-P06\src\project-2048.html
+[19:25:23] [L52:C3] Tag must be paired, missing: [ </div> ], start tag match failed [ <div class="container"> ] on line 34. (tag-pair)
+[19:25:23]   </body>
+[19:25:23] 1 error found in D:\Data\Documents\GitHub\FEND-P06\src\project-mobile.html
+[19:25:23] [L52:C3] Tag must be paired, missing: [ </div> ], start tag match failed [ <div class="container"> ] on line 34. (tag-pair)
+[19:25:23]   </body>
+[19:25:23] 1 error found in D:\Data\Documents\GitHub\FEND-P06\src\project-webperf.html
+[19:25:23] [L54:C3] Tag must be paired, missing: [ </div> ], start tag match failed [ <div class="container"> ] on line 34. (tag-pair)
+[19:25:23]   </body>
+Extracted messages:  [ { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 122,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 3,
+    description: 'The universal selector (*) is known to be slow. (rule: universal-selector)',
+    getFile: [Function],
+    code: 'universal-selector' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 43,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 68,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 98,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 2,
+    colNbr: 7,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 3,
+    colNbr: 18,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 6,
+    colNbr: 9,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 9,
+    colNbr: 3,
+    description: 'Heading (h2) has already been defined. (rule: unique-headings)',
+    getFile: [Function],
+    code: 'unique-headings' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: 9,
+    colNbr: 7,
+    description: 'Heading (h3) has already been defined. (rule: unique-headings)',
+    getFile: [Function],
+    code: 'unique-headings' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\print.css',
+    lineNbr: undefined,
+    colNbr: undefined,
+    description: 'You have 2 h2s, 2 h3s defined in this stylesheet. (rule: unique-headings)',
+    getFile: [Function],
+    code: 'unique-headings' } ]
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: a vinyl file is available in message!
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: no .sourceMap in vinyl file (gulp-sourcemaps)
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: sourcemap comments in contents of vinyl file?
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: no sourcemap found in contents of vinyl file!
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: no sourcemap found in vinyl file.
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: reading file
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: resolving sourcemap
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: sourcemap not found.
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css.map: reading file (if exists)
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css.map: error reading: ENOENT: no such file or directory, open 'D:\Data\Documents\GitHub\FEND-P06\src\css\print.css.map'
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: added sourcemap to cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\print.css: found sourcemap in cache
+Filtering messages: filterOrUpdate
+# Outputs: 1
+Use of !important (rule: important)
+The universal selector (*) is known to be slow. (rule: universal-selector)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Heading (h2) has already been defined. (rule: unique-headings)
+Heading (h3) has already been defined. (rule: unique-headings)
+You have 2 h2s, 2 h3s defined in this stylesheet. (rule: unique-headings)
+Extracted messages:  [ { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\css\\style.css',
+    lineNbr: 14,
+    colNbr: 1,
+    description: 'Outlines should only be modified using :focus. (rule: outline-none)',
+    getFile: [Function],
+    code: 'outline-none' } ]
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: a vinyl file is available in message!
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: no .sourceMap in vinyl file (gulp-sourcemaps)
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: sourcemap comments in contents of vinyl file?
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: no sourcemap found in contents of vinyl file!
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: no sourcemap found in vinyl file.
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: reading file
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: resolving sourcemap
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: sourcemap not found.
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css.map: reading file (if exists)
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css.map: error reading: ENOENT: no such file or directory, open 'D:\Data\Documents\GitHub\FEND-P06\src\css\style.css.map'
+D:\Data\Documents\GitHub\FEND-P06\src\css\style.css: added sourcemap to cache
+Filtering messages: filterOrUpdate
+# Outputs: 1
+Outlines should only be modified using :focus. (rule: outline-none)
+[19:25:23] 3 errors found in D:\Data\Documents\GitHub\FEND-P06\src\views\pizza.html
+[19:25:23] [L6:C1] <title> must be present in <head> tag. (title-require)
+[19:25:23] </head>
+[19:25:23] [L101:C120] Tag must be paired, no start tag: [ </input> ] (tag-pair)
+[19:25:23]             <input id="sizeSlider" type="range" min="1" max="3" value="2" step="1" onchange="resizePizzas(this.value)"></input>
+[19:25:23] [L144:C1] Tag must be paired, no start tag: [ </html> ] (tag-pair)
+[19:25:23] </html>
+Extracted messages:  [ { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 19,
+    colNbr: 3,
+    description: 'Expected end of value but found \'\\9\'. (rule: known-properties)',
+    getFile: [Function],
+    code: 'known-properties' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 27,
+    colNbr: 3,
+    description: 'Using width with padding can sometimes make elements larger than you expect. (rule: box-model)',
+    getFile: [Function],
+    code: 'box-model' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 30,
+    colNbr: 3,
+    description: 'Using width with border can sometimes make elements larger than you expect. (rule: box-model)',
+    getFile: [Function],
+    code: 'box-model' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 32,
+    colNbr: 3,
+    description: 'The property -moz-transition is compatible with -webkit-transition and -o-transition and should be included as well. (rule: compatible-vendor-prefixes)',
+    getFile: [Function],
+    code: 'compatible-vendor-prefixes' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 36,
+    colNbr: 3,
+    description: 'Expected end of value but found \'\\9\'. (rule: known-properties)',
+    getFile: [Function],
+    code: 'known-properties' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 259,
+    colNbr: 16,
+    description: 'Values of 0 shouldn\'t have units specified. (rule: zero-units)',
+    getFile: [Function],
+    code: 'zero-units' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 416,
+    colNbr: 18,
+    description: 'Values of 0 shouldn\'t have units specified. (rule: zero-units)',
+    getFile: [Function],
+    code: 'zero-units' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 574,
+    colNbr: 18,
+    description: 'Values of 0 shouldn\'t have units specified. (rule: zero-units)',
+    getFile: [Function],
+    code: 'zero-units' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 732,
+    colNbr: 18,
+    description: 'Values of 0 shouldn\'t have units specified. (rule: zero-units)',
+    getFile: [Function],
+    code: 'zero-units' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 758,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 761,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 764,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 767,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 780,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 781,
+    colNbr: 3,
+    description: 'Use of !important (rule: important)',
+    getFile: [Function],
+    code: 'important' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 785,
+    colNbr: 3,
+    description: 'The property -moz-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)',
+    getFile: [Function],
+    code: 'compatible-vendor-prefixes' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 785,
+    colNbr: 3,
+    description: 'The property -ms-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)',
+    getFile: [Function],
+    code: 'compatible-vendor-prefixes' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\bootstrap-grid.css',
+    lineNbr: 785,
+    colNbr: 3,
+    description: 'The property -o-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)',
+    getFile: [Function],
+    code: 'compatible-vendor-prefixes' } ]
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: a vinyl file is available in message!
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: no .sourceMap in vinyl file (gulp-sourcemaps)
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: sourcemap comments in contents of vinyl file?
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: no sourcemap found in contents of vinyl file!
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: no sourcemap found in vinyl file.
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: reading file
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: resolving sourcemap
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: sourcemap not found.
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css.map: reading file (if exists)
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css.map: error reading: ENOENT: no such file or directory, open 'D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css.map'
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: added sourcemap to cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\bootstrap-grid.css: found sourcemap in cache
+Filtering messages: filterOrUpdate
+# Outputs: 1
+Expected end of value but found '\9'. (rule: known-properties)
+Using width with padding can sometimes make elements larger than you expect. (rule: box-model)
+Using width with border can sometimes make elements larger than you expect. (rule: box-model)
+The property -moz-transition is compatible with -webkit-transition and -o-transition and should be included as well. (rule: compatible-vendor-prefixes)
+Expected end of value but found '\9'. (rule: known-properties)
+Values of 0 shouldn't have units specified. (rule: zero-units)
+Values of 0 shouldn't have units specified. (rule: zero-units)
+Values of 0 shouldn't have units specified. (rule: zero-units)
+Values of 0 shouldn't have units specified. (rule: zero-units)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+Use of !important (rule: important)
+The property -moz-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)
+The property -ms-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)
+The property -o-transform is compatible with -webkit-transform and should be included as well. (rule: compatible-vendor-prefixes)
+Extracted messages:  [ { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\style.css',
+    lineNbr: 4,
+    colNbr: 1,
+    description: 'The universal selector (*) is known to be slow. (rule: universal-selector)',
+    getFile: [Function],
+    code: 'universal-selector' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\style.css',
+    lineNbr: 5,
+    colNbr: 3,
+    description: 'Missing standard property \'box-sizing\' to go along with \'-webkit-box-sizing\'. (rule: vendor-prefix)',
+    getFile: [Function],
+    code: 'vendor-prefix' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\style.css',
+    lineNbr: 6,
+    colNbr: 3,
+    description: 'Missing standard property \'box-sizing\' to go along with \'-moz-box-sizing\'. (rule: vendor-prefix)',
+    getFile: [Function],
+    code: 'vendor-prefix' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\style.css',
+    lineNbr: 28,
+    colNbr: 1,
+    description: 'Don\'t use IDs in selectors. (rule: ids)',
+    getFile: [Function],
+    code: 'ids' },
+  { sourceName: 'gulp-csslint',
+    type: 'warning',
+    filePath: 'D:\\Data\\Documents\\GitHub\\FEND-P06\\src\\views\\css\\style.css',
+    lineNbr: 50,
+    colNbr: 3,
+    description: 'Fallback background-color (hex or RGB) should precede RGBA background-color. (rule: fallback-colors)',
+    getFile: [Function],
+    code: 'fallback-colors' } ]
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: a vinyl file is available in message!
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: no .sourceMap in vinyl file (gulp-sourcemaps)
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: sourcemap comments in contents of vinyl file?
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: no sourcemap found in contents of vinyl file!
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: no sourcemap found in vinyl file.
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: reading file
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: resolving sourcemap
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: sourcemap not found.
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css.map: reading file (if exists)
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css.map: error reading: ENOENT: no such file or directory, open 'D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css.map'
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: added sourcemap to cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: found sourcemap in cache
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: checking for sourcemaps...
+D:\Data\Documents\GitHub\FEND-P06\src\views\css\style.css: found sourcemap in cache
+Filtering messages: filterOrUpdate
+# Outputs: 1
+The universal selector (*) is known to be slow. (rule: universal-selector)
+Missing standard property 'box-sizing' to go along with '-webkit-box-sizing'. (rule: vendor-prefix)
+Missing standard property 'box-sizing' to go along with '-moz-box-sizing'. (rule: vendor-prefix)
+Don't use IDs in selectors. (rule: ids)
+Fallback background-color (hex or RGB) should precede RGBA background-color. (rule: fallback-colors)
+[19:25:23] Finished 'js_check' after 304 ms
+[19:25:23] Starting 'lintSource'...
+[19:25:23] Finished 'lintSource' after 1.8 μs
