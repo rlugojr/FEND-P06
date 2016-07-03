@@ -46,7 +46,6 @@ gulp.task('checkBoot', function(){
     return gulp.src('src/views/pizza.html')
     .pipe(bootlint({
             loglevel: 'debug',
-            issues: fileIssues,
             reportFn: function(file, lint, isError, isWarning, errorLocation) {
                 var message = (isError) ? "ERROR! - " : "WARN! - ";
                 if (errorLocation) {
