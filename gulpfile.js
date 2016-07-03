@@ -4,6 +4,7 @@ var gulp = require('gulp'),
   csslint = require('gulp-csslint'),
   jshint = require('gulp-jshint'),
   htmlhint = require('gulp-htmlhint'),
+  bootlint = require('gulp-bootlint'),
   del = require('del'),
   concat = require('gulp-concat'),
   jsmin = require('gulp-jsmin'),
@@ -39,6 +40,30 @@ gulp.task('js_check', function() {
   return gulp.src('src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter(reporters('gulp-jshint')));
+});
+
+gulp.task('checkBoot', function(){
+    return gulp.src('src/views/pizza.html')
+    .pipe(bootlint({
+            loglevel: 'debug',
+            issues: fileIssues,
+            reportFn: function(file, lint, isError, isWarning, errorLocation) {
+                var message = (isError) ? "ERROR! - " : "WARN! - ";
+                if (errorLocation) {
+                    message += file.path + ' (line:' + (errorLocation.line + 1) + ', col:' + (errorLocation.column + 1) + ') [' + lint.id + '] ' + lint.message;
+                } else {
+                    message += file.path + ': ' + lint.id + ' ' + lint.message;
+                }
+                console.log(message);
+            },
+            summaryReportFn: function(file, errorCount, warningCount) {
+                if (errorCount > 0 || warningCount > 0) {
+                    console.log("please fix the " + errorCount + " errors and "+ warningCount + " warnings in " + file.path);
+                } else {
+                    console.log("No problems found in "+ file.path);
+                }
+            }
+        }));
 });
 
 //collect debug report
