@@ -63,25 +63,25 @@ gulp.task('resizeImages', function() {
   return gulp.src(['src/**/*.{png,jpg}','!src/**/index*.{png,jpg}'])
     .pipe(responsive({
       'img/profilepic.jpg': {width: 70},
-      'views/images/pizzeria.jpg': [{
+      'views/img/pizzeria.jpg': [{
           width: 360,
-          rename: 'views/images/pizzeria@3x.jpg'
+          rename: 'views/img/pizzeria@3x.jpg'
         },{
           width: 240,
-          rename: 'views/images/pizzeria@2x.jpg'
+          rename: 'views/img/pizzeria@2x.jpg'
         },{
           width: 120,
-          rename: 'views/images/pizzeria@1x.jpg'
+          rename: 'views/img/pizzeria@1x.jpg'
         }],
-      'views/images/pizza.png': [{
+      'views/img/pizza.png': [{
           width: 200,
-          rename: 'views/images/pizzeria@3x.png'
+          rename: 'views/img/pizza@3x.png'
         },{
           width: 150,
-          rename: 'views/images/pizzeria@2x.png'
+          rename: 'views/img/pizza@2x.png'
         },{
           width: 100,
-          rename: 'views/images/pizzeria@1x.png'
+          rename: 'views/img/pizza@1x.png'
         }],
       'img/2048.png': [{
           width: 560,
