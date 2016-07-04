@@ -378,7 +378,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.style.width="35%";
 
-  pizzaImage.src = "../../dist/views/img/pizza.png";
+  pizzaImage.src = "views/img/pizza.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImage.classList.add("resizeTarget");
   pizzaImage.style.width="100%";
@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i <= numMovers; i++) {
     elem = document.createElement('img'); //remove the "var" or you would create a new variable each time.
     elem.className = 'mover';
-    elem.src = "../../dist/views/img/pizza.png";
+    elem.src = "views/img/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
