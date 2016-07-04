@@ -10,7 +10,10 @@ var gulp = require('gulp'),
   jsmin = require('gulp-jsmin'),
   htmlmin = require('gulp-htmlmin'),
   csso = require('gulp-csso'),
-  imagemin = require('gulp-imagemin')
+  imagemin = require('gulp-imagemin'),
+  zopfli = require('imagemin-zopfli'),//imagemin plugin
+  pngcrush = require('imagemin-pngcrush'),//imagemin plugin
+  jpegrecompress = require('imagemin-jpeg-recompress'),//imagemin plugin
   responsive = require('gulp-responsive'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
@@ -82,51 +85,51 @@ gulp.task('copyPics', function() {
   gulp.src('src/img/index*.jpg').pipe(gulp.dest('dist/img'));
 });
 
-//resize, create responsive sets and minify images
-gulp.task('resizeImages', function() {
-  return gulp.src(['src/**/*.{png,jpg}','!src/**/index*.{png,jpg}'])
+//optimize and minify images
+gulp.task('imagemin',function(){
+    return gulp.src(['src/**/*.{png,jpg}','!src/**/index*.{png,jpg}','!src/img_tmp'])
+        .pipe(imagemin([
+              imagemin.jpegtran({"progressive":false}),
+              imagemin.optipng({"optimizationLevel": 5}),
+              jpegrecompress({"accurate":true,"target":70,"strip":true,"progressive":false}),
+              pngcrush({"reduce": true}),
+              zopfli({"8bit":true, "more": true})]))              
+        .pipe(gulp.dest('src/img_tmp'))
+});
+
+//resize, create responsive sets
+gulp.task('resizeImages',['imagemin'], function() {
+  return gulp.src('src/img_tmp/**/*')
     .pipe(responsive({
       'img/profilepic.jpg': {width: 70},
-      'views/img/pizzeria.jpg': [{
+      'views/img/pizzeria.jpg': {
           width: 360,
-          rename: 'views/img/pizzeria@3x.jpg'
-        },{
-          width: 240,
-          rename: 'views/img/pizzeria@2x.jpg'
-        },{
-          width: 120,
-          rename: 'views/img/pizzeria@1x.jpg'
-        }],
-      'views/img/pizza.png': [{
-          width: 200,
-          rename: 'views/img/pizza@3x.png'
-        },{
-          width: 150,
-          rename: 'views/img/pizza@2x.png'
-        },{
+          rename: 'views/img/pizzeria.jpg'
+        },
+      'views/img/pizza.png': {
           width: 100,
-          rename: 'views/img/pizza@1x.png'
-        }],
+          rename: 'views/img/pizza.png'
+        },
       'img/2048.png': [{
-          width: 560,
-          rename: 'img/2048@3x.png'
+          width: 480,
+          rename: 'img/2048@2x.png'
         },{
-          width: 260,
-          rename: 'img/2048@1x.png'
+          width: 360,
+          rename: 'img/2048.png'
         }],
       'img/cam_be_like.jpg': [{
           width: 480,
           rename: 'img/cam_be_like@2x.jpg'
         },{
-          width: 260,
-          rename: 'img/cam_be_like@1x.jpg'
+          width: 360,
+          rename: 'img/cam_be_like.jpg'
         }],
       'img/mobilewebdev.jpg': [{
-          width: 600,
+          width: 480,
           rename: 'img/mobilewebdev@2x.jpg'
         },{
-          width: 260,
-          rename: 'img/mobilewebdev@1x.jpg'
+          width: 360,
+          rename: 'img/mobilewebdev.jpg'
         }],
        },{
           progressive: true,
@@ -135,14 +138,10 @@ gulp.task('resizeImages', function() {
           withoutEnlargement: false,
 
       }))
-      .pipe(gulp.dest('src/img_tmp'))
+      .pipe(gulp.dest('dist'))
 });
 
-gulp.task('imagemin',['resizeImages'],function(){
-    gulp.src('src/img_tmp/**/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist'))
-});
+
 
 
 //optimize and minify HTML
@@ -195,7 +194,7 @@ gulp.task('resetBuild',['wipe_dist','wipe_img_temp']);
 
 gulp.task('lintSource',['html_check','css_check','js_check','reports']);
 
-gulp.task('imgProcess',['copyPics','imagemin']);
+gulp.task('imgProcess',['copyPics','resizeImages']);
 
 gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD']);
 
@@ -212,5 +211,5 @@ gulp.task('critical',['makeBuild'],function(cb){
 });
 
 gulp.task('default', function() {
-  return gutil.log('The available options are: resetBuild, lintSource, imgProcess or makeBuild.');
+  return gutil.log('The available task group options are: resetBuild, lintSource, imgProcess, makeBuild or critical (makebuild with critical path inline-CSS.)');
 });
