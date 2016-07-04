@@ -378,7 +378,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.style.width="35%";
 
-  pizzaImage.src = "views/img/pizza.png";
+  pizzaImage.src = "../../dist/views/img/pizza.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImage.classList.add("resizeTarget");
   pizzaImage.style.width="100%";
@@ -436,7 +436,7 @@ var resizePizzas = function(size) {
         case "1":
           return 0.25;
         case "2":
-          return 0.3333;
+          return 0.38;
         case "3":
           return 0.5;
         default:
@@ -452,17 +452,17 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[0], size);
-    var newwidth = (document.getElementsByClassName("randomPizzaContainer")[0].offsetWidth + dx) + 'px';
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer"), size);
+    var newwidth = (document.getElementsByClassName("randomPizzaContainer").offsetWidth + dx) + 'px';
     //calculate outside of loop.
     var pizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     //get number of pizza containers
     var lengthContainer = pizzaContainer.length;
     //create variable to hold reference to randomPizzaContainer collection.
-    var updateContainer = document.getElementsByClassName("randomPizzaContainer");
+    //var updateContainer = document.querySelector("randomPizzaContainer");
 
     for (var i = 0; i < lengthContainer; i++) {
-      updateContainer.style.width = newwidth;
+      pizzaContainer[i].style.width = newwidth;
     }
   }
 
@@ -517,10 +517,14 @@ function updatePositions() {
   var lengthItems = items.length;
   var scrollTop = document.body.scrollTop;
 
-  for (var i = 0; i < lengthItems; i++) {
-      var phase = Math.sin((scrollTop / 1250) + (i % 5));
-      items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  function animate() {
+    for (var i = 0; i < lengthItems; i++) {
+        var phase = Math.sin((scrollTop / 1250) + (i % 5));
+        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    }
   }
+  //If this worked well enough for the video game, it will work wonders here!
+  requestAnimationFrame(animate);
 
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -552,12 +556,12 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i <= numMovers; i++) {
     elem = document.createElement('img'); //remove the "var" or you would create a new variable each time.
     elem.className = 'mover';
-    elem.src = "views/img/pizza.png";
+    elem.src = "../../dist/views/img/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById("movingPizzas1").appendChild(elem); //TODO: Move collection ID out of loop and reference by variable.
+    document.querySelector("#movingPizzas1").appendChild(elem); //TODO: Move collection ID out of loop and reference by variable.
   }
   updatePositions();
 });

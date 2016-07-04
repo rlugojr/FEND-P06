@@ -1,7 +1,7 @@
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  -box-sizing: border-box;
 }
 
 body {
@@ -16,22 +16,7 @@ input {
 
 form {
   display: inline-block;
-  margin-left: 4px;
-  margin-right: 4px;
 }
-
-form:first-child {
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 4px;
-}
-
-form:last-child {
-  display: inline-block;
-  margin-left: 4px;
-  margin-right: 0;
-}
-
 
 .centered {
   text-align: center;
@@ -43,7 +28,7 @@ form:last-child {
 
 .mover {
   position: fixed;
-  width: 256px;
+  width: 75px;
   z-index: -1;
 }
 
