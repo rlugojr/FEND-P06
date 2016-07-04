@@ -18,8 +18,9 @@ var gulp = require('gulp'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
   rev = require('gulp-rev'),
-  pump = require('pump');
-  reporters = require('reporters')
+  pump = require('pump'),
+  reporters = require('reporters'),
+  zlanddoc = require('gulp-zlanddoc'),
   logCapt = require('gulp-log-capture');
   
 //set report collection level
@@ -142,8 +143,6 @@ gulp.task('resizeImages',['imagemin'], function() {
 });
 
 
-
-
 //optimize and minify HTML
 gulp.task('minHTML', function() {
   return gulp.src('src/**/*.html')
@@ -174,9 +173,26 @@ gulp.task('minJS', function () {
       .pipe(gulp.dest('dist'));
 });
 
+
+
+gulp.task('createMD', function() {
+  // search for readme files and exclude certain folders
+  return gulp.src([
+    './**/README.md',
+    "!node_modules/**/*",
+    "!node_modules"
+  ])
+  .pipe(zlanddoc({
+    buildFileDescriptions: true,
+    // these are the default extensions, no need to pass them
+    fileExtensions: ['.html','.js', '.css']
+  }))
+  .pipe(gulp.dest('dist'));
+});
+
 //copy markdown help file
-gulp.task('copyMD', function() {
-  gulp.src('src/*.md').pipe(gulp.dest('dist'));
+gulp.task('copyMD',['createMD'], function() {
+  gulp.src('src/**/*.md').pipe(gulp.dest('dist'));
 });
 
 

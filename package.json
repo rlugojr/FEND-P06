@@ -51,6 +51,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
+    "gulp-zlanddoc": "^0.1.9",
     "imagemin-jpeg-recompress": "^5.1.0",
     "imagemin-pngcrush": "^5.0.0",
     "imagemin-zopfli": "^5.0.0",
