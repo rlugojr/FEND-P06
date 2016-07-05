@@ -378,11 +378,8 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.style.width="35%";
 
-  pizzaImage.src = "../../dist/views/img/pizza.png";
+  pizzaImage.src = "img/pizza.png";
   pizzaImage.classList.add("img-responsive");
-  pizzaImage.classList.add("resizeTarget");
-  pizzaImage.style.width="100%";
-  pizzaImage.style.height="100%";
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
@@ -436,7 +433,7 @@ var resizePizzas = function(size) {
         case "1":
           return 0.25;
         case "2":
-          return 0.38;
+          return 0.3333;
         case "3":
           return 0.5;
         default:
@@ -452,11 +449,11 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer"), size);
-    var newwidth = (document.getElementsByClassName("randomPizzaContainer").offsetWidth + dx) + 'px';
+    var dx = determineDx(document.querySelector("randomPizzaContainer"), size);
+    var newwidth = (document.querySelector("randomPizzaContainer").offsetWidth + dx) + 'px';
     //calculate outside of loop.
     var pizzaContainer = document.getElementsByClassName("randomPizzaContainer");
-    //get number of pizza containers
+    //get number of pizza containers and at the same time populate the live node list in pizzaContainer.
     var lengthContainer = pizzaContainer.length;
     //create variable to hold reference to randomPizzaContainer collection.
     //var updateContainer = document.querySelector("randomPizzaContainer");
@@ -523,7 +520,7 @@ function updatePositions() {
         items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
     }
   }
-  //If this worked well enough for the video game, it will work wonders here!
+  //If this worked well enough for the video game project, it will work wonders here!
   requestAnimationFrame(animate);
 
 
@@ -556,7 +553,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i <= numMovers; i++) {
     elem = document.createElement('img'); //remove the "var" or you would create a new variable each time.
     elem.className = 'mover';
-    elem.src = "../../dist/views/img/pizza.png";
+    elem.src = "img/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;

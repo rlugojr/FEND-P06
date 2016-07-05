@@ -20,7 +20,6 @@ var gulp = require('gulp'),
   rev = require('gulp-rev'),
   pump = require('pump'),
   reporters = require('reporters'),
-  zlanddoc = require('gulp-zlanddoc'),
   logCapt = require('gulp-log-capture');
   
 //set report collection level
@@ -173,28 +172,10 @@ gulp.task('minJS', function () {
       .pipe(gulp.dest('dist'));
 });
 
-
-
-gulp.task('createMD', function() {
-  // search for readme files and exclude certain folders
-  return gulp.src([
-    './**/README.md',
-    "!node_modules/**/*",
-    "!node_modules"
-  ])
-  .pipe(zlanddoc({
-    buildFileDescriptions: true,
-    // these are the default extensions, no need to pass them
-    fileExtensions: ['.html','.js', '.css']
-  }))
-  .pipe(gulp.dest('dist'));
-});
-
 //copy markdown help file
-gulp.task('copyMD',['createMD'], function() {
-  gulp.src('src/**/*.md').pipe(gulp.dest('dist'));
+gulp.task('copyMD', function() {
+  gulp.src('src/*.md').pipe(gulp.dest('dist'));
 });
-
 
 //delete dist folder in preparation for next build.
 gulp.task('wipe_dist', function() {
@@ -225,6 +206,7 @@ gulp.task('critical',['makeBuild'],function(cb){
         height: 480
     });
 });
+
 
 gulp.task('default', function() {
   return gutil.log('The available task group options are: resetBuild, lintSource, imgProcess, makeBuild or critical (makebuild with critical path inline-CSS.)');
