@@ -193,6 +193,8 @@ gulp.task('lintSource',['html_check','css_check','js_check','reports']);
 
 gulp.task('imgProcess',['copyPics','resizeImages']);
 
+gulp.task('buildScriptsOnly',['minHTML','minCSS','minJS','copyMD']);
+
 gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD']);
 
 gulp.task('critical',['makeBuild'],function(cb){

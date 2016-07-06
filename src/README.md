@@ -10,8 +10,8 @@ Initial review of the code and analysis of potential issues required running the
 
 To have an understanding of the current condition and also to have a benchmark for comparison afterwards, I used PageSpeed on a version of the website running on my server, using the original, untouched source code and documented the results.
 
-- [Initial PageSpeed Desktop results](doc/results_initial/PageSpeed%20Insights_Mobile.pdf)
-- [Initial PageSpeed Mobile results](doc/results_initial/PageSpeed%20Insights_desktop.pdf)
+- [Initial PageSpeed Desktop results](../doc/results_initial/PageSpeed%20Insights_Mobile.pdf)
+- [Initial PageSpeed Mobile results](../doc/results_initial/PageSpeed%20Insights_desktop.pdf)
 
 According to the score, the performance was substandard, and since I loaded the website on several physical systems, all of which  had the same exact issue in the same exact places, it could not be attributed to hardware.  This was a software issue and would require further analysis. If the same person that designed the "Pizza" page also coded the rest of the  website, I would probably suggest scrapping this code and giving him a copy of "Wordpress for Dummies".
 
@@ -54,8 +54,8 @@ While inspecting the JS file through Chrome Dev Tools, I found a function, named
 
 All of this, coupled with the optimizations provided by "Critical" (thanks you Addy Osmani, another fantastic tool contributed to the community) and the NGINX web server's speed and on the fly compression, I was able to get a ==***99% score on PageSpeed and "Time to 10 Frames" was brought down to a fraction of a millisecond with minimal change to the existing codebase and no need to refactor!***==
 
-The proof is... ![The proof is...](doc/results_final/Pizza_FPS.jpg)
-...is in the pudding ![...is in the pudding](doc/results_final/10_Frame_Time_Trials.jpg)
+The proof is... ![The proof is...](../doc/results_final/Pizza_FPS.jpg)
+...is in the pudding ![...is in the pudding](../doc/results_final/10_Frame_Time_Trials.jpg)
 
 #Further Optimizations?
 There is always potential for improvement.  For "Pizza.html", I could have continued along with the following:
@@ -92,6 +92,20 @@ Rlugojr
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization.html">Optimize images</a>
 * <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching.html">HTTP caching</a>
 
+
+#Running the Website
+Setup is simple for testing the site, you don't need a web server:
+1. Download the zip or fork the repo.
+2. Extract or copy the "Dist" folder, or its contents to another folder.
+3. Run index-critical.html in your browser.
+
+For development of improvements:
+1. Do the same as above but you need all of the files and folders, minus the contents of "Dist" which will be generated on build, in their current structure from this repository.
+2. Use the project.json and gulpfile.js to retrieve the necessary modules and versions used.
+3. Modify source and build is a two step process.
+	1. "gulp makeBuild"
+	2. "gulp critical"
+Now you can run index-critical from the "Dist" folder.
 
 
 ####Prepared and submitted by Ray Lugo, Jr.
