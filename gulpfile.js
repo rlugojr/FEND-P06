@@ -107,7 +107,6 @@ gulp.task('resizeImages',['imagemin'], function() {
           rename: 'views/img/pizzeria.jpg'
         },
       'views/img/pizza.png': {
-          width: 100,
           rename: 'views/img/pizza.png'
         },
       'img/2048.png': [{
