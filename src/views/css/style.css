@@ -1,10 +1,8 @@
-html {
+body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -box-sizing: border-box;
-}
 
-body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   background: black;
 }
@@ -35,8 +33,6 @@ form {
 .randomPizzaContainer {
   float: left;
   display: flex;
-  width: 33.33%;
-  height: 325px;
 }
 
 .randomPizzaContainer:after {
