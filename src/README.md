@@ -10,7 +10,8 @@ For development of improvements:
 2. Use the project.json and gulpfile.js to retrieve the necessary modules and versions used.
 3. Modify source and build is a two step process.
 	1. "gulp makeBuild"
-	2. "gulp critical"
+	2. Between gulp builds, empty the contents of "/src/tmp-img/" (I know...but a lot of coolgulp plugins aren't being updated enough.)
+	3.  "gulp critical"
 Now you can run index-critical from the "Dist" folder.
 
 
@@ -20,7 +21,7 @@ The goal of this assignment is to analyze a poorly performing website, identify 
 The final website submitted must pass two key tests in order to be considered optimized.  It must be able to get a [Google PageSpeed](https://developers.google.com/speed/pagespeed/) score of 90 or higher.  It must also maintain a minimum sustained rate of 60 frames per second during any user activity on the page "pizza.html".
 
 ### Initial Website Design and Code Review:
-Initial review of the code and analysis of potential issues required running the website and navigating from page to page.  This allowed me visually exprience and identify the least performant areas which would cause a bad user experience. I noted these areas in order to focus on the code that correspondedto said areas during the code review.
+Initial review of the code and analysis of potential issues required running the website and navigating from page to page.  This allowed me visually experience and identify the least performing areas which would cause a bad user experience. I noted these areas in order to focus on the code that correspondedto said areas during the code review.
 
 To have an understanding of the current condition and also to have a benchmark for comparison afterwards, I used PageSpeed on a version of the website running on my server, using the original, untouched source code and documented the results.
 
@@ -70,6 +71,7 @@ While inspecting the JS file through Chrome Dev Tools, I found a function, named
 All of this, coupled with the optimizations provided by "Critical" (thanks you Addy Osmani, another fantastic tool contributed to the community) and the NGINX web server's speed and on the fly compression, I was able to get a ==***99% score on PageSpeed and "Time to 10 Frames" was brought down to a fraction of a millisecond with minimal change to the existing codebase and no need to refactor!***==
 
 **The proof is...** ![The proof is...](../doc/results_final/Pizza_FPS.jpg)
+[.](../doc/results_final/Time_to_resizePizzas.jpg)
 **...is in the pudding** ![...is in the pudding](../doc/results_final/10_Frame_Time_Trials.jpg)
 
 #Further Optimizations?
