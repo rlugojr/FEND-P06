@@ -3,16 +3,15 @@
 Setup is simple for testing the site, you don't need a web server:
 1. Download the zip or fork the repo.
 2. Extract or copy the "Dist" folder, or its contents to another folder.
-3. Run index-critical.html in your browser.
+3. Run index.html in your browser.
 
 For development of improvements:
 1. Do the same as above but you need all of the files and folders, minus the contents of "Dist" which will be generated on build, in their current structure from this repository.
 2. Use the project.json and gulpfile.js to retrieve the necessary modules and versions used.
 3. Modify source and build is a two step process.
-	1. "gulp makeBuild"
-	2. Between gulp builds, empty the contents of "/src/tmp-img/" (I know...but a lot of coolgulp plugins aren't being updated enough.)
-	3.  "gulp critical"
-Now you can run index-critical from the "Dist" folder.
+	1. To create the optimized build, run "gulp buildIt"
+	2. Then run "gulp replaceIndex". This replaces the index.html with the version created by "critical".
+Now you can run index.html from the "Dist" folder.
 
 
 ###Objective:
@@ -45,9 +44,12 @@ After running the workflow to Lint the HTML, CSS and JavaScript, I saw the scree
 
 To allow PageSpeed access to the webpage, I tried the combination of SimpleHTTPServer and NGROK, but from experience I knew that this would not be sufficient...I could get a bit more help with the optimization process if I setup a VM with NGINX and exposed that through my firewall in a DMZ.  One of the features NGINX has is the ability to compress files on the fly, according to rules that I provide, so that the code and assets are delivered quicker than without.  I took a couple of hours to configure and secure, and monitor, and secure, and iterated this for a while until the web server logs were normal (there are a lot of bored people out there apparently).
 
-After reviewing the code through Chrome Developer Tools, I found that the Javacript files were definitely blocking the DOM, so I moved them down many lines in the code, right before "</body>". The Google Font was also called incorrectly, as it downloaded every language set and version for the chosen font, which I corrected and immediately saw improvement.  I also corrected the HTML to make sure each IMG element had width and hieght and also resized the images in my Gulp workflow to get a version that was small enough in size but still able to produce good quality when resized, since the page was meant to be responsive. That made a huge difference, especially in the case of "Pizzeria.jpg" which weighed in at a hefty 2.25MB (stop the insanity!)
-
-I created a Gulp configuration with the usual minimizers, compressors and various other workflow steps [gulpfile.js](../gulpfile.js).  This required several hours and iterations as I had to adjust the workflow whenever I found new things to address in the code, and I could probably spend as much time improving this the gulp workflow as I could actually doing the assignment (Don't miss the forest for the workflow!) The untouched, original code was kept in the folder named "SRC" and the new version was written out to "DIST".  Once I had the Gulp workflow solid and saw the initial results were favorable, I deployed the build to NGINX and ran PageSpeed.  This time the score was ***30/100***, a 5% increase based on compression alone. Not enough but a I'll stick with it even if it takes a thousand cuts.
+1. After reviewing the code through Chrome Developer Tools, I found that the Javacript files were definitely blocking the DOM, so I moved them down many lines in the code, right before "</body>" and set them to load "async".
+2. The Google Font was also called incorrectly, as it downloaded every language set and version for the chosen font!  After trying several different promise-basd solutions, I decided to embed the font in a CSS file.  Amazing speeds and font loaded without issue.
+3. I also corrected the HTML to make sure each IMG element had width and hieght and also resized the images in my Gulp workflow to get a version that was small enough in size but still able to produce good quality when resized, since the page was meant to be responsive. That made a huge difference, especially in the case of "Pizzeria.jpg" which weighed in at a hefty 2.25MB (stop the insanity!)
+4. The "pizza.png" image had a depth of 32, so I had to edit the original file manually, just once, and set the depth to "8".
+5. Set the JS files to "use strict" to ensure the browser would handle optimization correctly and also to prevent bugs introduced by syntax errors or missing variables.
+6. I created a Gulp configuration with the usual minimizers, compressors and various other workflow steps [gulpfile.js](../gulpfile.js).  This required several hours and iterations as I had to adjust the workflow whenever I found new things to address in the code, and I could probably spend as much time improving this the gulp workflow as I could actually doing the assignment (Don't miss the forest for the workflow!) The untouched, original code was kept in the folder named "SRC" and the new version was written out to "DIST".  Once I had the Gulp workflow solid and saw the initial results were favorable, I deployed the build to NGINX and ran PageSpeed.  This time the score was ***30/100***, a 5% increase based on compression alone. Not enough but a I'll stick with it even if it takes a thousand cuts.
 
 Frustration began to form as I reviewed the code and could not make sense of the CSS mishmosh.  I reorganized the CSS and ran it again.  Slight improvement, but what was I missing.  I followed all of the rules and kept everything seperate, HTML, CSS and JS.  Then I remembered that small JS or CSS can be inlined to increase performance if not used by other pages.  The JS routine for Google Analytics was definitely reused, so I made a separate file for it and set both JS file includes to "async". I then decided to check for any updated versions of the Google Analytics JS file.  Absolutely, not only was there a newer version, but there was a specific version (an IIFE which loads it into the Global space, I believe) that was designed to prevent blocking!  Even better, while I was drawn towards other topics on Google's Optimization site, I found a project named "Critical", also available as a Gulp module, which ran after the build process and programatically creates an "index-critical.html" which contains parts of the JS and CSS files that would normally block and automatically inlines them!  I couldn't type the updates to my gulpfile fast enough!  When I finally had a build ready with the new "critical" version of the "index.html" file, I tested with PageSpeed again and achieved a score of **99/100**! The Gods have smiled on me for once.  Funny enough, the 1% I was deducted was due to the low caching time associated with the Google Analytics JS file, but I'm happy with 99% and I doubt either Sergey or Larry would take my call about this issue anyway.
 
@@ -66,12 +68,11 @@ While inspecting the JS file through Chrome Dev Tools, I found a function, named
 4. Simplified the code inside of loops as much as possible, moving whichever lines of code outside of the loop and ensuring the remaining lines have the least posssible impact on the CRP.
 5. Tried using the "Transform" style method, although I reversed the commit because it could drain mobile battery power while running.
 5. The most significant change came from using "requestAnimationFrame()", which I researched thoroughly for the video game assignment and now I see it has uses outside of the video game and Canvas environment.  The "Time to Draw 10 frames" dropped from 10-13ms to 0.01-0.03ms instantly with this one change!  My graphics card was now in play and offloaded this part of the work for the browser (as nature, or NVidia, intended.)
-6. Because I have a smidgen of OCD, I had to take the 3 methods that handle "resizePizza" and refactor them into one that is more concise and required a fraction of the element lookups used in the original methods.
+6. combined the 3 methods that handle "resizePizza" and refactor them into one that is more concise and required a fraction of the element lookups used in the original methods.
 
 All of this, coupled with the optimizations provided by "Critical" (thanks you Addy Osmani, another fantastic tool contributed to the community) and the NGINX web server's speed and on the fly compression, I was able to get a ==***99% score on PageSpeed and "Time to 10 Frames" was brought down to a fraction of a millisecond with minimal change to the existing codebase and no need to refactor!***==
 
-**The proof is...** ![The proof is...](../doc/results_final/Pizza_FPS.jpg)
-[.](../doc/results_final/Time_to_resizePizzas.jpg)
+**The proof is...** ![The proof is...](../doc/results_final/Pizza_FPS.jpg)![..right here..](../doc/results_final/Time_to_resizePizzas.jpg)
 **...is in the pudding** ![...is in the pudding](../doc/results_final/10_Frame_Time_Trials.jpg)
 
 #Further Optimizations?

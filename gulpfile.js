@@ -17,8 +17,8 @@ var gulp = require('gulp'),
   responsive = require('gulp-responsive'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
-  useref = require('gulp-useref');
-  runSequence = require('run-sequence');
+  replace = require('gulp-replace');
+  runSequence = require('run-sequence'),
   rev = require('gulp-rev'),
   pump = require('pump'),
   reporters = require('reporters'),
@@ -146,7 +146,8 @@ gulp.task('resizeImages',['imagemin'], function() {
 //optimize and minify HTML
 gulp.task('minHTML', function() {
   return gulp.src('src/**/*.html')
-    .pipe(useref({noAssets: true, noConcat:true}))
+    .pipe(replace('.js','.min.js'))
+    .pipe(replace('.css','.min.css'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(htmlmin({removeComments: true}))
     .pipe(htmlmin({HTML5: true}))
@@ -157,20 +158,19 @@ gulp.task('minHTML', function() {
 //optimize and minify CSS
 gulp.task('minCSS', function () {
     return gulp.src('src/**/*.css')
-        .pipe(gulp.dest('dist'))
         .pipe(csso({
             restructure: true,
             sourceMap: true,
             debug: true,
             comments: false
         }))
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('dist'));
 });
 
 //optimize and minify JS
 gulp.task('minJS', function () {
     gulp.src('src/**/*.js')
-      .pipe(gulp.dest('dist'))
       .pipe(jsmin())
       .pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest('dist'));
@@ -212,7 +212,7 @@ gulp.task('critical',['makeBuild'],function(cb){
         inline: true,
         base: 'dist/',
         src: 'index.html',
-        dest: 'dist/index.html',
+        dest: 'dist/index-critical.html',
         minify: true,
         width: 320,
         height: 480
@@ -224,15 +224,31 @@ gulp.task('criticalNoPics',['makeBuildNoPics'],function(cb){
         inline: true,
         base: 'dist/',
         src: 'index.html',
-        dest: 'dist/index.html',
+        dest: 'dist/index-critical.html',
         minify: true,
         width: 320,
         height: 480
     });
 });
 
-gulp.task('buildIt', function(cb) {
-    runSequence(['wipe_img_temp','wipe_dist'],'critical');
+gulp.task('backupIndex',function(){
+    gulp.src("./dist/index.html")
+    .pipe(rename('index.bak'))
+    .pipe(gulp.dest("./dist")); 
+});
+
+gulp.task('renameIndexCritical',function(){
+     gulp.src("./dist/index-critical.html")
+    .pipe(rename('index.html'))
+    .pipe(gulp.dest("./dist")); 
+});
+
+gulp.task('replaceIndex',function(){
+    return runSequence('backupIndex','renameIndexCritical');
+});
+
+gulp.task('buildIt', function() {
+    return runSequence(['wipe_img_temp','wipe_dist'],'critical','replaceIndex');
 });
 
 gulp.task('buildItNoPics', function(cb) {

@@ -47,6 +47,7 @@
     "gulp-jsmin": "^0.1.5",
     "gulp-log-capture": "0.0.6",
     "gulp-messenger": "^0.18.0",
+    "gulp-replace": "^0.5.4",
     "gulp-responsive": "^2.4.0",
     "gulp-rev": "^7.1.0",
     "gulp-sourcemaps": "^1.6.0",
