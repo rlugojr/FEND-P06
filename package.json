@@ -40,6 +40,7 @@
     "gulp-csso": "^2.0.0",
     "gulp-htmlhint": "^0.3.1",
     "gulp-htmlmin": "^2.0.0",
+    "gulp-if": "^2.0.1",
     "gulp-image": "^2.0.1",
     "gulp-imagemin": "^3.0.1",
     "gulp-jshint": "^2.0.1",
@@ -50,6 +51,7 @@
     "gulp-rev": "^7.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.4",
+    "gulp-useref": "^3.1.0",
     "gulp-util": "^3.0.7",
     "gulp-zlanddoc": "^0.1.9",
     "imagemin-jpeg-recompress": "^5.1.0",
@@ -59,6 +61,7 @@
     "lodash": "^4.13.1",
     "minimatch": "^3.0.2",
     "pump": "^1.0.1",
-    "reporters": "0.0.4"
+    "reporters": "0.0.4",
+    "run-sequence": "^1.2.2"
   }
 }

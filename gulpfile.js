@@ -17,6 +17,8 @@ var gulp = require('gulp'),
   responsive = require('gulp-responsive'),
   rename = require('gulp-rename'),
   sourcemaps = require('gulp-sourcemaps'),
+  useref = require('gulp-useref');
+  runSequence = require('run-sequence');
   rev = require('gulp-rev'),
   pump = require('pump'),
   reporters = require('reporters'),
@@ -144,16 +146,18 @@ gulp.task('resizeImages',['imagemin'], function() {
 //optimize and minify HTML
 gulp.task('minHTML', function() {
   return gulp.src('src/**/*.html')
+    .pipe(useref({noAssets: true, noConcat:true}))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(htmlmin({removeComments: true}))
     .pipe(htmlmin({HTML5: true}))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist'));
 });
 
 
 //optimize and minify CSS
 gulp.task('minCSS', function () {
     return gulp.src('src/**/*.css')
+        .pipe(gulp.dest('dist'))
         .pipe(csso({
             restructure: true,
             sourceMap: true,
@@ -166,6 +170,7 @@ gulp.task('minCSS', function () {
 //optimize and minify JS
 gulp.task('minJS', function () {
     gulp.src('src/**/*.js')
+      .pipe(gulp.dest('dist'))
       .pipe(jsmin())
       .pipe(rename({suffix: '.min'}))
       .pipe(gulp.dest('dist'));
@@ -179,6 +184,10 @@ gulp.task('copyMD', function() {
 //delete dist folder in preparation for next build.
 gulp.task('wipe_dist', function() {
   return del.sync('dist/**/*');
+});
+
+gulp.task('wipe_dist_noPics', function(){
+    return del.sync('dist/**/*','!dist/**/*.{png,jpg}');
 });
 
 //clear caches - not needed yet.
@@ -196,18 +205,39 @@ gulp.task('buildScriptsOnly',['minHTML','minCSS','minJS','copyMD']);
 
 gulp.task('makeBuild',['imgProcess','minHTML','minCSS','minJS','copyMD']);
 
+gulp.task('makeBuildNoPics',['minHTML','minCSS','minJS','copyMD']);
+
 gulp.task('critical',['makeBuild'],function(cb){
   critical.generate({
         inline: true,
         base: 'dist/',
         src: 'index.html',
-        dest: 'dist/index-critical.html',
+        dest: 'dist/index.html',
         minify: true,
         width: 320,
         height: 480
     });
 });
 
+gulp.task('criticalNoPics',['makeBuildNoPics'],function(cb){
+  critical.generate({
+        inline: true,
+        base: 'dist/',
+        src: 'index.html',
+        dest: 'dist/index.html',
+        minify: true,
+        width: 320,
+        height: 480
+    });
+});
+
+gulp.task('buildIt', function(cb) {
+    runSequence(['wipe_img_temp','wipe_dist'],'critical');
+});
+
+gulp.task('buildItNoPics', function(cb) {
+    runSequence(['wipe_img_temp','wipe_dist_noPics'],'criticalNoPics');
+});
 
 gulp.task('default', function() {
   return gutil.log('The available task group options are: resetBuild, lintSource, imgProcess, makeBuild or critical (makebuild with critical path inline-CSS.)');
